@@ -51,6 +51,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'mailcatcher'
+  gem 'dotenv-rails'
+  gem 'awesome_print'
 end
 
 group :development do
