@@ -3195,3 +3195,324 @@ Completed 200 OK in 15ms (Views: 7.9ms | ActiveRecord: 3.4ms)
   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(51348844672424565)[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-08-21 10:15:11 -0400
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 12206ms (Views: 12202.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/magnacarta" for 127.0.0.1 at 2017-08-21 10:15:38 -0400
+Processing by MagnacartaController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-21 10:15:38 -0400
+Processing by Users::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (2.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (37.7ms)
+Completed 200 OK in 204ms (Views: 117.8ms | ActiveRecord: 53.6ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-08-21 10:15:43 -0400
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mZ0VFVKsxP9+dKHFPgsGbhy6mVts4tkqFBqjr68QO8Zcxdzhmd8wmu0Uv+1RBh9Apy5h2zZqjJzK0dEF4pRvRA==", "user"=>{"email"=>"mhartman4@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (23.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "mhartman4@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (9.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "sign_in_count" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["current_sign_in_at", "2017-08-21 14:15:44.028684"], ["last_sign_in_at", "2017-08-13 21:10:36.381593"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 3], ["updated_at", "2017-08-21 14:15:44.033385"], ["id", 3]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:1215/
+Completed 302 Found in 274ms (ActiveRecord: 38.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-21 10:15:44 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 87ms (Views: 84.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/magnacarta" for 127.0.0.1 at 2017-08-21 10:15:45 -0400
+Processing by MagnacartaController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering magnacarta/index.html.erb within layouts/application
+  Rendered magnacarta/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 68ms (Views: 63.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/events" for 127.0.0.1 at 2017-08-21 10:15:46 -0400
+Processing by Api::EventsController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (6.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 93ms (Views: 34.3ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/api/events/search/?query=10" for 127.0.0.1 at 2017-08-21 10:21:23 -0400
+Processing by Api::EventsController#search as HTML
+  Parameters: {"query"=>"10"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (12.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (name LIKE '%10%' OR place LIKE '%10%' OR description LIKE '%10%')[0m
+Completed 200 OK in 122ms (Views: 20.6ms | ActiveRecord: 23.5ms)
+
+
+Started GET "/api/events/search/?query=sample" for 127.0.0.1 at 2017-08-21 10:21:29 -0400
+Processing by Api::EventsController#search as HTML
+  Parameters: {"query"=>"sample"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (name LIKE '%sample%' OR place LIKE '%sample%' OR description LIKE '%sample%')[0m
+Completed 200 OK in 13ms (Views: 5.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/magnacarta" for 127.0.0.1 at 2017-08-21 10:24:37 -0400
+Processing by MagnacartaController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering magnacarta/index.html.erb within layouts/application
+  Rendered magnacarta/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2619ms (Views: 2589.9ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/events" for 127.0.0.1 at 2017-08-21 10:24:57 -0400
+Processing by Api::EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 42ms (Views: 29.2ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/events/search/?query=10" for 127.0.0.1 at 2017-08-21 10:25:02 -0400
+Processing by Api::EventsController#search as HTML
+  Parameters: {"query"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (name LIKE '%10%' OR place LIKE '%10%' OR description LIKE '%10%')[0m
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/magnacarta" for 127.0.0.1 at 2017-08-21 10:25:20 -0400
+Processing by MagnacartaController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering magnacarta/index.html.erb within layouts/application
+  Rendered magnacarta/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 1724ms (Views: 1672.4ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/events" for 127.0.0.1 at 2017-08-21 10:25:22 -0400
+Processing by Api::EventsController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (16.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 64ms (Views: 18.4ms | ActiveRecord: 35.6ms)
+
+
+Started GET "/magnacarta" for 127.0.0.1 at 2017-08-21 10:27:38 -0400
+Processing by MagnacartaController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering magnacarta/index.html.erb within layouts/application
+  Rendered magnacarta/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 225ms (Views: 172.8ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/api/events" for 127.0.0.1 at 2017-08-21 10:27:38 -0400
+Processing by Api::EventsController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (2.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 49ms (Views: 17.2ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/magnacarta/api" for 127.0.0.1 at 2017-08-21 10:33:22 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/magnacarta/api"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/events" for 127.0.0.1 at 2017-08-21 10:33:24 -0400
+Processing by Api::EventsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/chances" for 127.0.0.1 at 2017-08-21 10:33:28 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/chances"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/chances" for 127.0.0.1 at 2017-08-21 10:33:54 -0400
+  
+SyntaxError (/Users/michaelhartman/Desktop/magnacarta/config/routes.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+    get 'chances', puts "Hello!"
+                         ^):
+  
+config/routes.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+Started GET "/api/chances" for 127.0.0.1 at 2017-08-21 10:43:16 -0400
+  
+SyntaxError (/Users/michaelhartman/Desktop/magnacarta/config/routes.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+    get 'chances', puts "Hello!"
+                         ^):
+  
+config/routes.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+Started GET "/api/chances" for 127.0.0.1 at 2017-08-21 10:43:33 -0400
+Processing by Api::ChancesController#index as HTML
+  [1m[36mUser Load (30.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 449ms (Views: 3.6ms | ActiveRecord: 387.7ms)
+
+
+Started GET "/api/chances" for 127.0.0.1 at 2017-08-21 10:44:09 -0400
+Processing by Api::ChancesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 4.4ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - /app/assets/javascripts/chances.json):
+  
+app/controllers/api/chances_controller.rb:5:in `read'
+app/controllers/api/chances_controller.rb:5:in `index'
+Started GET "/api/chances" for 127.0.0.1 at 2017-08-21 10:49:42 -0400
+  
+SyntaxError (/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting ')'
+...way":34,"rebounder":"K. O'Quinn","reboundType":"DRB","playCa...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...nder":"K. O'Quinn","reboundType":"DRB","playCall":"None"},{"...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+..."K. O'Quinn","reboundType":"DRB","playCall":"None"},{"team":...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...","reboundType":"DRB","playCall":"None"},{"team":0,"teamAbbr...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+...undType":"DRB","playCall":"None"},{"team":0,"teamAbbr":"NYK"...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+..."DRB","playCall":"None"},{"team":0,"teamAbbr":"NYK","outcome...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...ll":"None"},{"team":0,"teamAbbr":"NYK","outcome":"2PM","expP...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+...one"},{"team":0,"teamAbbr":"NYK","outcome":"2PM","expPoints"...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...am":0,"teamAbbr":"NYK","outcome":"2PM","expPoints":0.8360993...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tINTEGER, expecting keyword_end
+...0,"teamAbbr":"NYK","outcome":"2PM","expPoints":0.83609937678...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...NYK","outcome":"2PM","expPoints":0.836099376784738,"points":...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...ints":0.836099376784738,"points":2,"startTime":551.75,"endTi...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...376784738,"points":2,"startTime":551.75,"endTime":558.8601,"...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...":2,"startTime":551.75,"endTime":558.8601,"chanceStartType":...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...Time":558.8601,"chanceStartType":"DRB","statsGameCode":20161...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+...558.8601,"chanceStartType":"DRB","statsGameCode":2016120718,...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...StartType":"DRB","statsGameCode":2016120718,"period":1,"star...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...atsGameCode":2016120718,"period":1,"startGameClock":168.25,"...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...0718,"period":1,"startGameClock":168.25,"isTransition":1,"sh...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...GameClock":168.25,"isTransition":1,"shooter":"#5 C. Lee","sh...
+...                               ^
+/Users/michaelhartman/Desktop/magnacarta/app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...68.25,"isTransition":1,"shooter":"#5 C. Lee","shotType":null...
+...                               ^):
+  
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting ')'
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tINTEGER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tCONSTANT, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/api/chances_controller.rb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/api/chances" for 127.0.0.1 at 2017-08-21 10:52:03 -0400
+Processing by Api::ChancesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 106ms (ActiveRecord: 8.7ms)
+
+
+  
+JSON::ParserError (765: unexpected token at '"'):
+  
+app/controllers/api/chances_controller.rb:5:in `index'
