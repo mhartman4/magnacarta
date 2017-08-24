@@ -106,15 +106,19 @@ You should have a user `postgres` with password `postgres` set up on your pg dat
 
 ## Finishing touches
 
+Navigate to the directory where you want your local repo to live e.g. `cd /mnt/c/Users/mhartman/Desktop` (you can read up more on how the linux/windows file system works here: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/). 
+
 `git clone https://github.com/mhartman4/magnacarta magnacarta` (clone this repo into a directory called magnacarta).
+
+Optional: Make your magnacarta folder the bash terminal's default directory when you start bash e.g.: `echo 'cd /mnt/c/Users/mhartman/Desktop/magnacarta' >> ~/.bashrc`
 
 `bundle install` to install all relevant gems in our Gemfile.
 
-Optional: Make your magnacarta folder the bash terminal's default directory when you start bash: `echo 'cd ~/magnacarta' >> ~/.bashrc`
+`rake db:create` to create your magnacarta_development database locally
+
+`rake db:migrate` to get your database up to date
 
 To start the server: `rails s` then go to localhost:1215 to see the app running.
-
-To run the rails console: `rails c`
 
 
 
