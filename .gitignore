@@ -1,1 +1,9 @@
 .env
+
+bin/bundle
+bin/spring
+bin/rails
+bin/rake
+bin/setup
+bin/update
+bin/yarn
