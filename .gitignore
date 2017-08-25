@@ -7,3 +7,5 @@ bin/rake
 bin/setup
 bin/update
 bin/yarn
+
+*.cache
