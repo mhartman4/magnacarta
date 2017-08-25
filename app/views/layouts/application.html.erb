@@ -4,23 +4,38 @@
     <title>Magnacarta</title>
     <%= csrf_meta_tags %>
 
+
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <% if user_signed_in? %>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/magnacarta">Magna Carta</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
 
-      <%= link_to('Edit registration', edit_user_registration_path) %>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+              <li><%= link_to(current_user.email, edit_user_registration_path) %></li>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 
-    <% else %>
+            <% else %>
 
-      <%= link_to('Register', new_user_registration_path)  %>
-      <%= link_to('Login', new_user_session_path)  %>
+              <li><%= link_to('Sign Up', new_user_registration_path)  %></li>
+              <li><%= link_to('Login', new_user_session_path)  %></li>
 
-    <% end %>
-
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <% unless flash.empty? %>
          <script type="text/javascript">
               <% flash.each do |f| %>

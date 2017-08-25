@@ -14,3 +14,23 @@
  *= require toastr
  *= require_self
  */
+
+ @mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+ .login-container {
+   padding: 10px;
+   border: 1px darkgrey solid;
+   @include border-radius(5px);
+   button {
+     margin: 0px 10px;
+   }
+   .form-control {
+     padding: 5px;
+     margin: 5px 0px;
+   }
+ }

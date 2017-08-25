@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  #root 'welcome#index', layout: "application"
+  root 'magnacarta#index'
   get 'magnacarta', to: 'magnacarta#index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

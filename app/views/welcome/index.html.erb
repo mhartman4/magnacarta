@@ -1,10 +1,8 @@
+
 <% if current_user.nil? %>
 	<%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
 <% else %>
 	<%= link_to "/magnacarta", class: 'login-button' do %>Go to App<% end %>
 <% end %>
 
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<h2>Welcome to Magna Carta</h2>
