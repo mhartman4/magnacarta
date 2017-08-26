@@ -8,12 +8,9 @@ class Ability
     if user.superadmin_role?
       can :manage, :all
       can :access, :rails_admin
-      can :dashboard
-      can :magnacarta
     end
-    if user.supervisor_role?
-      can :manage, User
-    end
+
+
 
     # The first argument to `can` is the action you are giving the user
     # permission to do.
