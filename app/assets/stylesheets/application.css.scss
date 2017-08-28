@@ -15,11 +15,22 @@
  *= require_self
  */
 
- @mixin border-radius($radius) {
+@mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
           border-radius: $radius;
+}
+
+@mixin scale-iframe($scale) {
+    -moz-transform: scale($scale);
+    //-moz-transform-origin: $x $y;
+    -o-transform: scale($scale);
+    //-o-transform-origin: $x $y;
+    -webkit-transform: scale($scale);
+    //-webkit-transform-origin: $x $y;
+    transform: scale($scale);
+    //transform-origin: $x $y;
 }
 
  .login-container {
@@ -27,10 +38,38 @@
    border: 1px darkgrey solid;
    @include border-radius(5px);
    button {
-     margin: 0px 10px;
+     margin: 10px 10px;
    }
    .form-control {
      padding: 5px;
      margin: 5px 0px;
    }
  }
+
+.magna-carta {
+  .cart {
+    border: 1px black solid;
+  }
+  .focused {
+    border: 5px red solid !important;
+  }
+  .eagle-video-player {
+    text-align: center;
+    margin: 0px 10px;
+
+    .start-end-labels {
+      text-align: center;
+      margin-top: 10px;
+      .scoreboard {
+        font-family: "Orbitron";
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 800px;
+      border: 1px black solid;
+      @include scale-iframe(0.75);
+    }
+  }
+}

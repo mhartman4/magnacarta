@@ -17,3 +17,8 @@
 //= require jquery
 //= require toastr
 //= require_tree .
+
+
+document.onkeypress = function(event) {
+  console.log(String.fromCharCode(event.keyCode || event.which));
+};
