@@ -73,6 +73,9 @@ window.chanceReducer = (state = initialState, action) => {
             return $.extend(true, {}, state, {pendingAction: {player: action.buttonValue}})
           }
         }
+      case "DELETE":
+        diff = {chartedActions: state.chartedActions.filter(item => item != action.chartedAction)}
+        return $.extend(false, {}, state, diff)
       default:
         return state
     }
