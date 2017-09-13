@@ -13,12 +13,7 @@
 //= require rails-ujs
 //= require react
 //= require react_ujs
-//= require components
 //= require jquery
 //= require toastr
-//= require_tree .
-
-
-document.onkeypress = function(event) {
-  console.log(String.fromCharCode(event.keyCode || event.which));
-};
+//= require components
+//= require_tree ./components

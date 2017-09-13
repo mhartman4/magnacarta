@@ -36,6 +36,8 @@ gem 'cancancan'
 
 gem 'bootstrap-sass'
 
+gem 'browserify-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

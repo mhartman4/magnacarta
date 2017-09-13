@@ -50,6 +50,11 @@
   .cart {
     border: 1px black solid;
   }
+
+  button {
+    margin: 2px;
+  }
+
   .focused {
     border: 5px red solid !important;
   }
@@ -69,7 +74,7 @@
       width: 100%;
       height: 800px;
       border: 1px black solid;
-      @include scale-iframe(0.75);
+      @include scale-iframe(0.9);
     }
   }
 }
