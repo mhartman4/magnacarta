@@ -8,7 +8,7 @@ This is a rails app used to chart events.
 
 * Deployed using: Heroku
 
-* Found at http://magnacarta.herokuapp.com
+* Found at https://magnacarta.herokuapp.com
 
 # Configuring Windows for Local Development
 
@@ -20,17 +20,17 @@ Using "Ubuntu on Windows 10" you can set your Windows machine up to develop loca
 
 * Select "Developer Mode"
 
-* Press Windows key and search for "Turn windows features on and off" 
+* Press Windows key and search for "Turn windows features on and off"
 
 * Check "Windows Subsystem for Linux"
 
 * Press Windows key and search for "bash"
 
-* A command prompt should pop up. Type in Y to confirm installation. 
+* A command prompt should pop up. Type in Y to confirm installation.
 
 * Select a username and password for Ubuntu (can't be "admin")
 
-* On restart, you should be able to search for "Bash on Ubuntu on Windows" which will open up a Bash command line. 
+* On restart, you should be able to search for "Bash on Ubuntu on Windows" which will open up a Bash command line.
 
 * Note: **do not edit files like .bashrc using Windows text editors. Changes you make to your Linux file system should be made directly from the bash command line and not from a Windows program or the file explorer. If you do that, you're gonna have a bad time.**
 
@@ -102,11 +102,11 @@ Now if you run `ssh -T git@github.com` you should get something like `Hi usernam
 
 Follow instructions here to install Postgres on Windows: https://www.postgresql.org/download/windows/
 
-You should have a user `postgres` with password `postgres` set up on your pg database. Ensure that it is communicating correctly by typing `psql -p 5432 -h localhost -U postgres` into your bash terminal. The postgres command line should appear. Type `\q` to exit postgres command line and return to bash. 
+You should have a user `postgres` with password `postgres` set up on your pg database. Ensure that it is communicating correctly by typing `psql -p 5432 -h localhost -U postgres` into your bash terminal. The postgres command line should appear. Type `\q` to exit postgres command line and return to bash.
 
 ## Finishing touches
 
-Navigate to the directory where you want your local repo to live e.g. `cd /mnt/c/Users/mhartman/Desktop` (you can read up more on how the linux/windows file system works here: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/). 
+Navigate to the directory where you want your local repo to live e.g. `cd /mnt/c/Users/mhartman/Desktop` (you can read up more on how the linux/windows file system works here: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/).
 
 `git clone https://github.com/mhartman4/magnacarta magnacarta` (clone this repo into a directory called magnacarta).
 
@@ -119,13 +119,3 @@ Optional: Make your magnacarta folder the bash terminal's default directory when
 `rake db:migrate` to get your database up to date
 
 To start the server: `rails s` then go to localhost:1215 to see the app running.
-
-
-
-
-
-
-
-
-
-
